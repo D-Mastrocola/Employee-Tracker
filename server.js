@@ -1,43 +1,54 @@
-const inquirer = require('inquirer');
-const mysql2 = require('mysql2');
-const tablePrint = require('console.table');
-const db = require('./db/connection');
-const Read = require('./utils/read');
-
-
+const inquirer = require("inquirer");
+const mysql2 = require("mysql2");
+const db = require("./db/connection");
+const Read = require("./utils/read");
+const Create = require("./utils/create");
 
 let read = new Read();
+let create = new Create();
 
-inquirer
-  .prompt({
-    type: 'list',
-    name: 'choice',
-    message: 'What would you like to do?',
-    choices: ['View All Departments', 'View All Roles','View All Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'Update Employee Role']
-  }).then(({ choice }) => {
-    console.log(choice);
-    if(choice == 'View All Departments') {
-      read.viewAllDepartments();
-    }
-  });
+let running = true;
 
-/*console.table([
-  {
-    name: 'foo',
-    age: 10
-  }, {
-    name: 'bar',
-    age: 20
+let chooseAction = () => {
+  () => {
+
+    inquirer
+    .prompt({
+      type: "list",
+      name: "choice",
+      message: "What would you like to do?",
+      choices: [
+        "View All Departments",
+        "View All Roles",
+        "View All Employees",
+        "Add a Department",
+        "Add a Role",
+        "Add an Employee",
+        "Update Employee Role",
+        "Quit",
+      ],
+    })
+    .then(({ choice }) => {
+      console.log(choice);
+      if (choice == "View All Departments") {
+        read.viewAllDepartments();
+      }
+      if (choice == "Add a Department") {
+        create.createDepartment();
+      }
+      if (choice == "Quit") {
+        running = false;
+      }
+    });
   }
-]);*/
+};
 
-/*db.query(sql, (err, rows) => {
-  if (err) {
-    res.status(500).json({ error: err.message });
+let checkQuit = () => {
+  if(running) {
+    chooseAction();
+  } else {
+    console.log('Ending')
     return;
   }
-  res.json({
-    message: "success",
-    data: rows,
-  });
-});*/
+}
+checkQuit();
