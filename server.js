@@ -1,33 +1,12 @@
 const inquirer = require('inquirer');
 const mysql2 = require('mysql2');
 const tablePrint = require('console.table');
+const db = require('./db/connection');
+const Read = require('./utils/read');
 
-// Connect to database
-const db = mysql2.createConnection(
-  {
-    host: 'localhost',
-    // Your MySQL username,
-    user: 'root',
-    // Your MySQL password
-    password: '',
-    database: 'tracker'
-  },
-  console.log('Connected to the tracker database.')
-);
 
-let viewAllDepartments = () => {
-  let sql = "SELECT * FROM departemnts";
-  db.query(sql, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: "success",
-      data: rows,
-    });
-  });
-}
+
+let read = new Read();
 
 inquirer
   .prompt({
@@ -38,7 +17,7 @@ inquirer
   }).then(({ choice }) => {
     console.log(choice);
     if(choice == 'View All Departments') {
-      viewAllDepartments();
+      read.viewAllDepartments();
     }
   });
 
