@@ -1,5 +1,7 @@
 const mysql2 = require("mysql2");
 const tablePrint = require('console.table');
+// get the promise implementation, we will use bluebird
+const bluebird = require('bluebird');
 
 // Connect to database
 const db = mysql2.createConnection(
@@ -10,6 +12,7 @@ const db = mysql2.createConnection(
     // Your MySQL password
     password: "toor",
     database: "tracker",
+    Promise: bluebird
   },
   console.log("Connected to the tracker database.")
 );

@@ -1,9 +1,12 @@
 const db = require("../db/connection");
 class Read {
   constructor() {}
+  test() {
+    db.promise().query("SELECT * from departments").then((rows) => console.log(rows));
+  }
   viewAllDepartments() {
     let sql = "SELECT * FROM departments";
-    db.query(sql, (err, rows) => {
+    db.execute(sql, (err, rows) => {
       if (err) {
         console.log(err.message);
         return;
@@ -15,8 +18,7 @@ class Read {
   };
   viewAllRoles() {
     let sql = `SELECT * FROM roles 
-    LEFT JOIN departments ON roles.department_id = departments.id
-    GROUP BY department_id ORDER BY role_salary DESC;`
+    LEFT JOIN departments ON roles.department_id = departments.id;`
     db.query(sql, (err, rows) => {
       if (err) {
         console.log(err.message);
@@ -29,9 +31,8 @@ class Read {
   };
   viewAllEmployees() {
     let sql = `SELECT * FROM employees
-    LEFT JOIN roles ON employees.roles_id = roles.id
-    LEFT JOIN departments ON roles.department_id = departments.id
-    GROUP BY roles_id ORDER BY roles.role_salary DESC;`
+    LEFT JOIN roles ON employees.role_id = roles.id
+    LEFT JOIN departments ON roles.department_id = departments.id;`
     db.query(sql, (err, rows) => {
       if (err) {
         console.log(err.message);

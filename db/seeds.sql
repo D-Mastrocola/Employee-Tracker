@@ -13,7 +13,7 @@ VALUES
 ('accountant', 50000, 2),
 ('manufacturing', 30000, 3);
 
-INSERT INTO employees (first_name, last_name, roles_id)
+INSERT INTO employees (first_name, last_name, role_id)
 VALUES 
 ('Dominic', 'Mastrocola', 2),
 ('Todd', 'Barkley', 1),

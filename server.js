@@ -35,6 +35,9 @@ let chooseAction = () => {
       if (choice == "Add a Role") {
         create.createRole();
       }
+      if (choice == "Add an Employee") {
+        create.createEmployee();
+      }
       //READ
       if (choice == "View All Departments") {
         read.viewAllDepartments();
