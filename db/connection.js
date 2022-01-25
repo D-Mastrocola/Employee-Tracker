@@ -1,4 +1,5 @@
 const mysql2 = require("mysql2");
+const tablePrint = require('console.table');
 
 // Connect to database
 const db = mysql2.createConnection(
