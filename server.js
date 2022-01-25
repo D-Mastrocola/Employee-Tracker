@@ -10,8 +10,6 @@ let create = new Create();
 let running = true;
 
 let chooseAction = () => {
-
-
   inquirer
     .prompt({
       type: "list",
@@ -30,12 +28,18 @@ let chooseAction = () => {
     })
     .then(({ choice }) => {
       console.log(choice);
+      //CREATE
+      if (choice == "Add a Department") {
+        create.createDepartment(); 
+      }
+      if (choice == "Add a Role") {
+        create.createRole();
+      }
+      //READ
       if (choice == "View All Departments") {
         read.viewAllDepartments();
       }
-      if (choice == "Add a Department") {
-        create.createDepartment();
-      }
+
       if (choice == "Quit") {
         running = false;
       }

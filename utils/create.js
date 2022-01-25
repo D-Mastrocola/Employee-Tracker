@@ -31,9 +31,39 @@ class Create {
             return;
           }
           console.log("SUCCESS");
+          read.viewAllDepartments();
         });
       });
       return;
+  }
+  createRole() {
+    inquirer
+    .prompt({
+      type: "input",
+      name: "roleTitle",
+      message: "What is the title of the Role?",
+      validate: (input) => {
+        if (input.trim().length > 0) {
+          return true;
+        }
+        console.log("\nMust be at least 1 character long!");
+        return false;
+      },
+    })
+    .then(({ roleTitle }) => {
+      console.log(roleTitle );
+      let sql = `INSERT INTO roles (name)
+                  VALUES( '${roleTitle }'); `;
+
+      db.query(sql, (err, rows) => {
+        if (err) {
+          console.log(err.message);
+          return;
+        }
+        console.log("SUCCESS");
+      });
+    });
+    return;
   }
 }
 
