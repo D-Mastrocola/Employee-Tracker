@@ -39,7 +39,12 @@ let chooseAction = () => {
       if (choice == "View All Departments") {
         read.viewAllDepartments();
       }
-
+      if (choice == "View All Roles") {
+        read.viewAllRoles();
+      }
+      if (choice == "View All Employees") {
+        read.viewAllEmployees();
+      }
       if (choice == "Quit") {
         running = false;
       }
