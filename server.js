@@ -24,7 +24,7 @@ let chooseAction = () => {
         "Add an Employee",
         "Update Employee Role",
         "Quit",
-      ],
+      ]
     })
     .then(({ choice }) => {
       console.log(choice);
