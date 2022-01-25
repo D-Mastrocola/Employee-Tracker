@@ -1,5 +1,14 @@
 # Employee-Tracker
 
+## Walkthrough
+[Video](https://drive.google.com/file/d/1VnLd2cHVDCEzUdnRuFXVvzBQIBSlMGkT/view?usp=sharing)
+
+## Install
+run ```npm install``` in the root of the directory to install node modules
+
+## Run 
+run ```node server``` to run the program
+
 ## User Story
 - AS A business owner
 - I WANT to be able to view and manage the departments, roles, and employees in my company
