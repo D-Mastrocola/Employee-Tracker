@@ -30,6 +30,7 @@ class Read {
   viewAllEmployees() {
     let sql = `SELECT * FROM employees
     LEFT JOIN roles ON employees.roles_id = roles.id
+    LEFT JOIN departments ON roles.department_id = departments.id
     GROUP BY roles_id ORDER BY roles.role_salary DESC;`
     db.query(sql, (err, rows) => {
       if (err) {
