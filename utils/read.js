@@ -1,9 +1,6 @@
 const db = require("../db/connection");
 class Read {
   constructor() {}
-  test() {
-    db.promise().query("SELECT * from departments").then((rows) => console.log(rows));
-  }
   viewAllDepartments() {
     let sql = "SELECT * FROM departments";
     db.execute(sql, (err, rows) => {

@@ -3,9 +3,11 @@ const mysql2 = require("mysql2");
 const db = require("./db/connection");
 const Read = require("./utils/read");
 const Create = require("./utils/create");
+const Update = require("./utils/update");
 
 let read = new Read();
 let create = new Create();
+let update = new Update();
 
 let running = true;
 
@@ -47,6 +49,10 @@ let chooseAction = () => {
       }
       if (choice == "View All Employees") {
         read.viewAllEmployees();
+      }
+      //Update
+      if(choice === "Update Employee Role") {
+        update.updateEmployeeRole();
       }
       if (choice == "Quit") {
         running = false;
